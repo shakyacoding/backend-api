@@ -2,6 +2,7 @@ require('dotenv').config()
 const cors = require('cors');
 
 const express = require('express')
+const path = require('path');
 const server = express()
 const mongoose = require('mongoose')
 const { Schema } = mongoose;
@@ -25,6 +26,7 @@ server.use(cors())
 server.use(express.json())
 server.use(express.static(process.env.PUBLIC_DIR))
 server.use('/api/', productRouter)
+server.use(express.static(path.join(__dirname, 'public')));
 
 //route
 productRouter
